@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>¿Qué es Lombok?</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/icon_180.png" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+    });
+  </script>
+</head>
+
+<body for="html-export">
+
+
+  <div class="crossnote markdown-preview  ">
+
+    <h1 id="qué-es-lombok-">¿Qué es Lombok? 🤔 </h1>
+    <p>Lombok es una librería que elimina el <strong>código repetitivo</strong> en Java mediante anotaciones. Con solo
+      unas pocas líneas, puedes evitar escribir manualmente:</p>
+    <ul>
+      <li>Getters y setters</li>
+      <li>Constructores</li>
+      <li>Métodos <code>toString</code>, <code>equals</code>, <code>hashCode</code></li>
+      <li>Y mucho más...</li>
+    </ul>
+    <p>Si alguna vez has sentido que escribir getters, setters y constructores es tedioso... ¡este video es para ti!</p>
+    <hr>
+    <h2 id="anotaciones-clave-de-lombok-">Anotaciones clave de Lombok 💡 </h2>
+    <h3 id="1-data">1. <code>@Data</code> </h3>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Data</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Usuario</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span><span class="token punctuation"> nombre;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">int</span><span class="token punctuation"> edad;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p><strong>¿Qué hace?</strong></p>
+    <ul>
+      <li>Genera automáticamente los <strong>getters y setters</strong></li>
+      <li>Agrega <code>toString()</code>, <code>equals()</code> y <code>hashCode()</code></li>
+    </ul>
+    <p><strong>¿Beneficio?</strong></p>
+    <ul>
+      <li>Reduces <strong>más de 20 líneas</strong> de código a solo una anotación. 😎</li>
+    </ul>
+    <hr>
+    <h3 id="2-noargsconstructor-y-allargsconstructor">2. <code>@NoArgsConstructor</code> y
+      <code>@AllArgsConstructor</code>
+    </h3>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">NoArgsConstructor</span></span><span class="token punctuation">;</span>
+<span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">AllArgsConstructor</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Producto</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> <span class="token punctuation">nombre;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">double</span> <span class="token punctuation">precio;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p><strong>¿Qué hacen?</strong></p>
+    <ul>
+      <li><code>@NoArgsConstructor</code> crea un constructor sin argumentos</li>
+      <li><code>@AllArgsConstructor</code> crea un constructor con todos los argumentos</li>
+    </ul>
+    <p><strong>¿Beneficio?</strong></p>
+    <ul>
+      <li>¡Olvídate de escribir constructores manualmente! 🚀</li>
+    </ul>
+    <hr>
+    <h3 id="3-builder-uno-de-los-más-poderosos-">3. <code>@Builder</code> (Uno de los más poderosos) 💪🏼 </h3>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token keyword keyword-import">import</span> <span class="token import"><span class="token namespace">lombok<span class="token punctuation">.</span></span><span class="token class-name">Builder</span></span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Builder</span>
+<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-class">class</span> <span class="token class-name">Cliente</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> <span class="token punctuation">nombre;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">String</span> <span class="token punctuation">email;</span>
+    <span class="token keyword keyword-private">private</span> <span class="token class-name">int</span> <span class="token punctuation">edad;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    <p><strong>¿Para qué sirve?</strong></p>
+    <ul>
+      <li>Te permite construir objetos de manera más limpia y legible:</li>
+    </ul>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token class-name">Cliente</span> <span class="token punctuation">cliente</span> <span class="token operator">=</span> <span class="token class-name">Cliente</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">nombre</span><span class="token punctuation">(</span><span class="token string">"Juan"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">email</span><span class="token punctuation">(</span><span class="token string">"juan@example.com"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">edad</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span> 
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p><strong>Comparación sin <code>@Builder</code></strong></p>
+    <pre data-role="codeBlock" data-info="java" class="language-java java"><code><span class="token class-name">Cliente</span> <span class="token punctuation">cliente</span> <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Cliente</span><span class="token punctuation">(</span><span class="token string">"Juan"</span><span class="token punctuation">,</span> <span class="token string">"juan@example.com"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <p>Si tienes muchos atributos, los constructores normales pueden ser <strong>confusos</strong> y difíciles de leer.
+      <code>@Builder</code> lo hace más claro y flexible. 🙌
+    </p>
+    <hr>
+    <h2 id="por-qué-deberías-usar-lombok-">¿Por qué deberías usar Lombok? 🚀 </h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="color: white;">Característica</th>
+          <th style="color: white;">Sin Lombok 😩</th>
+          <th style="color: white;">Con Lombok 😍</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Getters y Setters</td>
+          <td>Escribes manualmente cada método</td>
+          <td>Se generan automáticamente</td>
+        </tr>
+        <tr>
+          <td>Constructores</td>
+          <td>Debes crearlos manualmente</td>
+          <td><code>@NoArgsConstructor</code> y <code>@AllArgsConstructor</code> lo hacen por ti</td>
+        </tr>
+        <tr>
+          <td>Patrón Builder</td>
+          <td>Constructor largo y poco legible</td>
+          <td><code>@Builder</code> lo hace limpio y fácil</td>
+        </tr>
+        <tr>
+          <td><code>toString()</code> y <code>equals()</code></td>
+          <td>Debes sobreescribirlos</td>
+          <td><code>@Data</code> los genera solo con una línea</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+
+  </div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
